@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {plural} from "../../utils";
 import './style.css';
 
-function Item({item, addToCart}){
+function Item({item, onAddToCart}){
 
 
   return (
@@ -12,7 +12,7 @@ function Item({item, addToCart}){
       <div className='Item-title'>{item.title}</div>
       <div className='Item-actions'>
         <div className='Item-price'>{item.price.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ')} ₽</div>
-        <button onClick={() => addToCart(item.code)} >
+        <button onClick={() => onAddToCart(item.code)} >
           Добавить
         </button>
       </div>

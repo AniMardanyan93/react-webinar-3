@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import './style.css';
 import CartItem from "../cartItem";
 
-function Cart({cart, setCart, setIsShow, isShow}){
+function Cart({cart, setIsShow, isShow, onRemoveToCart}){
 
-    const removeItem = (id) => {
-        setCart([
-            ...cart.filter(item => item.code != id)
-        ])
-    }
+
 
     return(
         <div className="Cart">
@@ -19,17 +15,19 @@ function Cart({cart, setCart, setIsShow, isShow}){
                 </div>
                 <div className="cartContent">
                     <table>
-                        {
-                            cart.length ?
-                            cart.map(item => (
-                                <CartItem key={item.code} id={item.code} price={item.price} title={item.title} count={item.count} removeItem={removeItem} />
-                            ))
-                            : <div className="emptyCart"> Карзина пустая</div>
-                        }
-                        <tr>
-                            <td></td><td><b>Итого</b></td>
-                            <td>{cart.reduce((acumlyator, curentItem) => acumlyator + curentItem.price,0)} ₽</td><td></td>
-                        </tr>
+                        <tbody>
+                            {
+                                cart.length ?
+                                cart.map((item, i) => (
+                                    <CartItem key={item.code} code={item.code} id={i} price={item.price} title={item.title} count={item.count} removeItem={onRemoveToCart} />
+                                ))
+                                : <tr className="emptyCart"><td>Карзина пустая</td></tr>
+                            }
+                            <tr>
+                                <td></td><td><b>Итого</b></td>
+                                <td>{cart.reduce((acumlyator, curentItem) => acumlyator + curentItem.price,0)} ₽</td><td></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

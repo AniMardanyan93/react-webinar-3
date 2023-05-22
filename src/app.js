@@ -13,32 +13,30 @@ import Cart from './components/cart';
 function App({store}) {
 
   const list = store.getState().list;
-  const [cart, setCart] = useState([])
+  const cart = store.getState().cart;
+  const sumFromCart = store.getState().sumFromCart;
+  // console.log(newCart)
+  // const [cart, setCart] = useState([])
   const [isShow, setIsShow] = useState(false)
 
   const toggleShow = () => {
     setIsShow((show) => !show)
   }
-  // const callbacks = {
-  //   onDeleteItem: useCallback((code) => {
-  //     store.deleteItem(code);
-  //   }, [store]),
-
-  //   onSelectItem: useCallback((code) => {
-  //     store.selectItem(code);
-  //   }, [store]),
-
-  //   onAddItem: useCallback(() => {
-  //     store.addItem();
-  //   }, [store])
-  // }
+  const callbacks = {
+    onAddToCart: useCallback((code) => {
+      store.addToCart(code)
+    }, []),
+    onRemoveToCart: useCallback((code) => {
+      store.removeItem(code)
+    },[])
+  }
 
   return (
     <PageLayout>
       <Head title='Магазин'/>
-      <Controls {...{cart, setCart, toggleShow}} />
-      <List {...{list, cart, setCart}} />
-      {isShow && <Cart {...{cart, setCart, setIsShow, isShow}} />}
+      <Controls {...{sumFromCart, toggleShow}} count={cart.length}/>
+      <List {...{list, cart}} onAddToCart={callbacks.onAddToCart}/>
+      {isShow && <Cart {...{cart, setIsShow, isShow}}  onRemoveToCart={callbacks.onRemoveToCart}/>}
     </PageLayout>
   );
 }
