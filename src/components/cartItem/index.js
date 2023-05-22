@@ -3,15 +3,12 @@ import './style.css';
 
 function CartItem({id, title, count, price, removeItem}){
     return(
-        <div className="CartItem">
-            <div>
-                <span>{title}</span>
-                <span>{price} ₽</span>
-                <span>{count} шт.</span>
-                <button onClick={() => removeItem(id)}>Удалить</button>
-            </div>
-
-        </div>
+            <tr>
+                <td>{title}</td>
+                <td>{price} ₽</td>
+                <td>{count} шт.</td>
+                <td><button onClick={() => removeItem(id)}>Удалить</button></td>
+            </tr>
     )
 }
 export default CartItem

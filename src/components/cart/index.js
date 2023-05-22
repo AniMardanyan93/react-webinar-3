@@ -17,13 +17,17 @@ function Cart({cart, setCart, setIsShow, isShow}){
                     <span>Корзина</span>
                     <span onClick={() => setIsShow(!isShow)}>Закрыть</span>
                 </div>
-                {
-                    cart.length ?
-                    cart.map(item => (
-                        <CartItem key={item.code} id={item.code} price={item.price} title={item.title} count={item.count} removeItem={removeItem} />
-                    ))
-                    : <div className="emptyCart"> Карзина пустая</div>
-                }
+                <div className="cartContent">
+                    <table>
+                        {
+                            cart.length ?
+                            cart.map(item => (
+                                <CartItem key={item.code} id={item.code} price={item.price} title={item.title} count={item.count} removeItem={removeItem} />
+                            ))
+                            : <div className="emptyCart"> Карзина пустая</div>
+                        }
+                    </table>
+                </div>
                 <p className="sum">Итого {cart.reduce((acumlyator, curentItem) => acumlyator + curentItem.price,0)} ₽</p>
                 
             </div>

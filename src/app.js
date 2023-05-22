@@ -3,6 +3,7 @@ import List from "./components/list";
 import Controls from "./components/controls";
 import Head from "./components/head";
 import PageLayout from "./components/page-layout";
+import Cart from './components/cart';
 
 /**
  * Приложение
@@ -13,6 +14,11 @@ function App({store}) {
 
   const list = store.getState().list;
   const [cart, setCart] = useState([])
+  const [isShow, setIsShow] = useState(false)
+
+  const toggleShow = () => {
+    setIsShow((show) => !show)
+  }
   // const callbacks = {
   //   onDeleteItem: useCallback((code) => {
   //     store.deleteItem(code);
@@ -30,8 +36,9 @@ function App({store}) {
   return (
     <PageLayout>
       <Head title='Магазин'/>
-      <Controls {...{cart, setCart}} />
+      <Controls {...{cart, setCart, toggleShow}} />
       <List {...{list, cart, setCart}} />
+      {isShow && <Cart {...{cart, setCart, setIsShow, isShow}} />}
     </PageLayout>
   );
 }

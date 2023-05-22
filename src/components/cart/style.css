@@ -27,3 +27,10 @@
 .Cart .sum{
     text-align: end;
 }
+.Cart .cartContent{
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+.Cart .cartContent table{
+    width: 100%;
+}
