@@ -11,18 +11,28 @@
 .Cart .popUp{
     width: 75%;
     height: min-content;
-    background-color: white;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+
     
 }
 .Cart .emptyCart{
     padding: 20px;
 }
 .Cart .cartHeader{
-    height: 50px;
+    height: 80px;
     background-color: #F5F5F5;
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    text-align: center;
+    align-items: baseline;
+}
+.Cart .cartHeader .header{
+    font-size: 32px;
+    font-weight: 700;
 }
 .Cart .sum{
     text-align: end;
@@ -33,4 +43,13 @@
 }
 .Cart .cartContent table{
     width: 100%;
+    text-align: center;
+}
+.Cart button{
+    background: #EFEFEF;
+    border: 1px solid #767676;
+    border-radius: 2px;
+    width: 76px;
+    height: 21px;
+    font-size: 13px;
 }

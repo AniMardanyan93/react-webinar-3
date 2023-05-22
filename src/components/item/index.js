@@ -11,6 +11,7 @@ function Item({item, addToCart}){
       <div className='Item-code'>{item.code}</div>
       <div className='Item-title'>{item.title}</div>
       <div className='Item-actions'>
+        <div className='Item-price'>{item.price.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ')} ₽</div>
         <button onClick={() => addToCart(item.code)} >
           Добавить
         </button>

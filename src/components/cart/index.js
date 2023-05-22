@@ -14,8 +14,8 @@ function Cart({cart, setCart, setIsShow, isShow}){
         <div className="Cart">
             <div className="popUp">
                 <div className="cartHeader">
-                    <span>Корзина</span>
-                    <span onClick={() => setIsShow(!isShow)}>Закрыть</span>
+                    <span className="header">Корзина</span>
+                    <button onClick={() => setIsShow(!isShow)}>Закрыть</button>
                 </div>
                 <div className="cartContent">
                     <table>
@@ -26,10 +26,12 @@ function Cart({cart, setCart, setIsShow, isShow}){
                             ))
                             : <div className="emptyCart"> Карзина пустая</div>
                         }
+                        <tr>
+                            <td></td><td><b>Итого</b></td>
+                            <td>{cart.reduce((acumlyator, curentItem) => acumlyator + curentItem.price,0)} ₽</td><td></td>
+                        </tr>
                     </table>
                 </div>
-                <p className="sum">Итого {cart.reduce((acumlyator, curentItem) => acumlyator + curentItem.price,0)} ₽</p>
-                
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import './style.css';
 
 function CartItem({id, title, count, price, removeItem}){
     return(
-            <tr>
+            <tr className="CartItem">
                 <td>{title}</td>
                 <td>{price} ₽</td>
                 <td>{count} шт.</td>
