@@ -15,8 +15,7 @@ function App({store}) {
   const list = store.getState().list;
   const cart = store.getState().cart;
   const sumFromCart = store.getState().sumFromCart;
-  // console.log(newCart)
-  // const [cart, setCart] = useState([])
+
   const [isShow, setIsShow] = useState(false)
 
   const toggleShow = () => {
@@ -36,7 +35,9 @@ function App({store}) {
       <Head title='Магазин'/>
       <Controls {...{sumFromCart, toggleShow}} count={cart.length}/>
       <List {...{list, cart}} onAddToCart={callbacks.onAddToCart}/>
-      {isShow && <Cart {...{cart, setIsShow, isShow}}  onRemoveToCart={callbacks.onRemoveToCart}/>}
+      {isShow && 
+        <Cart {...{cart, setIsShow, isShow}}  onRemoveToCart={callbacks.onRemoveToCart}/>
+      }
     </PageLayout>
   );
 }

@@ -4,8 +4,6 @@ import CartItem from "../cartItem";
 
 function Cart({cart, setIsShow, isShow, onRemoveToCart}){
 
-
-
     return(
         <div className="Cart">
             <div className="popUp">
